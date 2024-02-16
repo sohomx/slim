@@ -13,7 +13,7 @@ from llmware_module import (
 )
 
 # Streamlit app layout
-st.title("Perform NLP Tasks on CPU")
+st.title("understand analysis of the text:")
 
 # Text input
 text = st.text_area("Enter text here:")
@@ -30,7 +30,7 @@ analysis_tools = st.multiselect(
 # Execute analysis and display results
 if st.button("Analyze"):
     results = {}
-    
+
     if "Sentiment Analysis" in analysis_tools:
         results["Sentiment Analysis"] = classify_sentiment(text)
     if "Emotion Detection" in analysis_tools:
@@ -49,7 +49,7 @@ if st.button("Analyze"):
         results["Perform NER"] = perform_ner(text)
     if "Perform NLI" in analysis_tools:
         results["Perform NLI"] = perform_nli(text)
-    
+
     for tool, response in results.items():
         st.subheader(tool)
         st.json(response)
